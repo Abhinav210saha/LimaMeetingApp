@@ -1,13 +1,15 @@
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import React, { use } from 'react'
 import { useParams } from 'react-router-dom';
+import dotenv from 'dotenv'
+dotenv.config()
 
 function VideoRoom() {
       let { roomId } = useParams();
 
   const myMeeting = async (element) => {
-    const appId = 1118441628;
-    const serverSecret = "02f17cf9f19f691b9db46f1fec58e68e";
+    const appId = process.env.APPID;
+    const serverSecret = process.env.SERVER_SECRET;
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appId,
       serverSecret,
